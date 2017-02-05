@@ -18,3 +18,15 @@ peeps = open("peeps.csv","r")
 dict = {}
 
 
+#create a dictionary with each peep as the key and all of this peep's info (name, age, and id) from the peeps.csv file
+p = csv.reader(peeps)
+p.next()
+for d in peepsstr:
+    peep = {}
+    peep['name'] = d[0]
+    peep['age'] = d[1]
+    peep['id'] = d[2]
+    masterDict[peep['id']] = peep
+
+
+
