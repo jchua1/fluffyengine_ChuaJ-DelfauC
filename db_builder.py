@@ -10,6 +10,7 @@ import csv
 #connect to the server and create a database
 server = MongoClient('lisa.stuy.edu')
 fluffyengine = server.fluffyengine
+fluffyengine.collection.drop()
 
 #opens the csv files and gets the csv reader iterator for each
 #instantiate doc which will be a list of all the documents to be added to the collection
