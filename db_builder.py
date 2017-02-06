@@ -42,3 +42,24 @@ for course in courses:
 
 #inserts list of documents into db
 fluffyengine.collection.insert_many(docs)
+
+def average(peep_id):
+    some = 0
+    num = 0
+    collection = fluffyengine.collection
+    a = collection.find_one({'id': str(peep_id)})
+    courses = a['courses']
+    for i in courses:
+        some += int(courses[i])
+        num += 1.0
+    return some / num
+
+def report(peep_id):
+    a = fluffyengine.collection.find_one({'id': str(peep_id)})
+    name = str(a['name'])
+    id = int(a['id'])
+    avg = average(peep_id)
+    print name, id, avg
+
+for i in fluffyengine.collection.find():
+    report(i['id'])
