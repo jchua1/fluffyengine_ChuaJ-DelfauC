@@ -46,8 +46,7 @@ fluffyengine.collection.insert_many(docs)
 def average(peep_id):
     some = 0
     num = 0
-    collection = fluffyengine.collection
-    a = collection.find_one({'id': str(peep_id)})
+    a = fluffyengine.collection.find_one({'id': str(peep_id)})
     courses = a['courses']
     for i in courses:
         some += int(courses[i])
