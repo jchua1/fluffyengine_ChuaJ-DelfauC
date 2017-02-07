@@ -11,8 +11,8 @@ import csv
 server = MongoClient('lisa.stuy.edu')
 fluffyengine = server.fluffyengine
 
-#deletes collection and all of its documents if it already exists
-fluffyengine.collection.drop()
+#deletes peep collection and all of its documents if it already exists
+fluffyengine.peeps.drop()
 
 #opens the csv files and gets the csv reader iterator for each
 #instantiate doc which will be a list of all the documents to be added to the collection
@@ -39,3 +39,6 @@ for course in courses:
     doc = docs[int(course[2]) - 1]
     c = doc['courses']
     c[course[0]] = course[1]
+
+#inserts list of documents into db
+fluffyengine.peeps.insert_many(docs)

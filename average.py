@@ -16,5 +16,5 @@ def average(courses):
     return sum(grades) / float(len(grades))
 
 #iterates through collection documents and prints id, name, and average for each    
-for peep in fluffyengine.collection.find():
+for peep in fluffyengine.peeps.find():
     print peep['id'], peep['name'], average(peep['courses'])
