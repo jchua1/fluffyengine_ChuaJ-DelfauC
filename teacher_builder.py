@@ -15,7 +15,7 @@ teachers = csv.reader(open('teachers.csv'))
 docs = []
 
 #creates a document for each peep with all of their info (code, teacher, and period) from the teachers.csv file
-#gives each document a 'students' key which is an empty list that will be filled up later
+#when appending to the student list, checks for course name in each peep document's course dictionary keys
 teachers.next()
 for teacher in teachers:
     doc = {}
@@ -23,11 +23,10 @@ for teacher in teachers:
     doc['teacher'] = teacher[1]
     doc['period'] = teacher[2]
     doc['students'] = []
+    for peep in fluffyengine.peeps.find():
+        if doc['code'] in peep['courses']:
+            doc['students'].append(peep['id'])
     docs.append(doc)
 
-for peep in fluffyengine.peeps.find():
-    for course in peep['courses']:
-        print course
-
-#fluffyengine.teachers.insert_many(docs)
+fluffyengine.teachers.insert_many(docs)
 
