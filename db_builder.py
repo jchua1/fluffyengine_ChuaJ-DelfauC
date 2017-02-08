@@ -28,6 +28,7 @@ for peep in peeps:
     doc['name'] = peep[0]
     doc['age'] = peep[1]
     doc['id'] = peep[2]
+    doc['test'] = 'fluffy'
     doc['courses'] = {}
     docs.append(doc)
 
@@ -42,3 +43,9 @@ for course in courses:
 
 #inserts list of documents into db
 fluffyengine.peeps.insert_many(docs)
+
+#classwork using new functions
+#fluffyengine.peeps.delete_one({'id' : '10'})
+#fluffyengine.peeps.delete_many({'test' : 'fluffy'})
+#fluffyengine.peeps.update_one({'id' : '10'}, {'$set': {'test': 'fluffyengine'}})
+#fluffyengine.peeps.update_many({'test': 'fluffy'}, {'$set': {'test': 'fluffyengine'}})
